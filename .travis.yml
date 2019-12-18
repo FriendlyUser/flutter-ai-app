@@ -8,9 +8,6 @@ matrix:
       - build-tools-28.0.3
       - android-28
     before_script:
-    - echo $SECRETS_FOLDER > secrets64.tar || true
-    - base64 -d secrets64.tar > secrets.tar || true
-    - tar xvf secrets.tar || true
     - git clone https://github.com/flutter/flutter.git -b beta
     - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
     script:
