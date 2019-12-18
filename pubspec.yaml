@@ -1,14 +1,13 @@
-name: firebase_ml_vision_example
+name: firebase_test
 description: Demonstrates how to use the firebase_ml_vision plugin.
 author: Flutter Team <flutter-dev@googlegroups.com>
 
 dependencies:
   flutter:
     sdk: flutter
-
   image_picker: ^0.5.0
   cupertino_icons: ^0.1.2
-  firebase_ml_vision: 0.9.3+5
+  firebase_ml_vision: ^0.9.3+5
   firebase_core: ^0.4.0
   camera: ^0.5.6+1
 
