@@ -15,9 +15,9 @@ matrix:
     - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
     script:
     - ls
-    - flutter packages get
-    - flutter test || true
-    - flutter build apk
+    - ./flutter/bin/flutter packages get
+    - ./flutter/bin/flutter test || true
+    - ./flutter/bin/flutter build apk
     deploy:
       provider: releases
       api_key: $GITHUB_TOKEN
