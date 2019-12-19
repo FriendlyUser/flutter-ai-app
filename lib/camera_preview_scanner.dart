@@ -176,9 +176,9 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
     _initializeCamera();
   }
 
-  void _sendTextToEmail(String scrappedText) async {
+  void _sendTextToEmail() async {
     var resBody = {};
-    resBody["text"] = scrappedText;
+    resBody["text"] = _scanResults;
     http.post("https://text-extract-api.now.sh/scrap", body: resBody).then((http.Response response) {
       final int statusCode = response.statusCode;
       // try a basic route
@@ -241,7 +241,7 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
           ),
           FloatingActionButton(
             heroTag: 'unq2',
-            onPressed: _sendTextToEmail(_scanResults),
+            onPressed: _sendTextToEmail,
             materialTapTargetSize: MaterialTapTargetSize.padded,
             backgroundColor: Colors.green,
             child: const Icon(Icons.add_location, size: 36.0),
