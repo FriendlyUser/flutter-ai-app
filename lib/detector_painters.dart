@@ -148,7 +148,7 @@ class TextDetectorPainter extends CustomPainter {
     final ui.ParagraphBuilder builder = ui.ParagraphBuilder(
       ui.ParagraphStyle(
           textAlign: TextAlign.left,
-          fontSize: 23.0,
+          fontSize: 8.0,
           textDirection: TextDirection.ltr),
     );
     builder.addText(text);

@@ -174,6 +174,9 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
     _initializeCamera();
   }
 
+  void _sendTextToEmail() async {
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,12 +217,34 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
         ],
       ),
       body: _buildImage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toggleCameraDirection,
-        child: _direction == CameraLensDirection.back
-            ? const Icon(Icons.camera_front)
-            : const Icon(Icons.camera_rear),
-      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+         FloatingActionButton(
+            heroTag: 'unq1',
+            onPressed: _toggleCameraDirection,
+            child: _direction == CameraLensDirection.back
+                ? const Icon(Icons.camera_front)
+                : const Icon(Icons.camera_rear),
+          ),
+          SizedBox(
+            height: 16.0,
+          ),
+          FloatingActionButton(
+            heroTag: 'unq2',
+            onPressed: () {},
+            materialTapTargetSize: MaterialTapTargetSize.padded,
+            backgroundColor: Colors.green,
+            child: const Icon(Icons.add_location, size: 36.0),
+          ),
+        ],
+      )
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _toggleCameraDirection,
+      //   child: _direction == CameraLensDirection.back
+      //       ? const Icon(Icons.camera_front)
+      //       : const Icon(Icons.camera_rear),
+      // ),
     );
   }
 
