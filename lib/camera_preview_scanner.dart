@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'detector_painters.dart';
 import 'scanner_utils.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class CameraPreviewScanner extends StatefulWidget {
   @override
@@ -176,7 +177,9 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
   }
 
   void _sendTextToEmail(String scrappedText) async {
-    http.post("https://text-extract-api.now.sh/scrap", body: scrappedText).then((http.Response response) {
+    var resBody = {};
+    resBody["text"] = scrappedText;
+    http.post("https://text-extract-api.now.sh/scrap", body: resBody).then((http.Response response) {
       final int statusCode = response.statusCode;
   
       if (statusCode < 200 || statusCode > 400) {
@@ -226,7 +229,7 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
         ],
       ),
       body: _buildImage(),
-      floatingActionButton: Column(
+      floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
          FloatingActionButton(
