@@ -181,12 +181,9 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
     resBody["text"] = scrappedText;
     http.post("https://text-extract-api.now.sh/scrap", body: resBody).then((http.Response response) {
       final int statusCode = response.statusCode;
-  
-      if (statusCode < 200 || statusCode > 400) {
-        throw new Exception("Error while fetching data");
-      }
       // try a basic route
     });
+    return null;
   }
 
   @override
