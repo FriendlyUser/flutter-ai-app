@@ -239,7 +239,7 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
         ],
       ),
       body: _buildImage(),
-      floatingActionButton: Row(
+      floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
          FloatingActionButton(
@@ -254,7 +254,7 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
           ),
           FloatingActionButton(
             heroTag: 'unq2',
-            onPressed: _writeResult,
+            onPressed: _sendTextToEmail,
             materialTapTargetSize: MaterialTapTargetSize.padded,
             backgroundColor: Colors.green,
             child: const Icon(Icons.add_location, size: 36.0),

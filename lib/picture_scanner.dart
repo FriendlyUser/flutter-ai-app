@@ -107,6 +107,17 @@ class _PictureScannerState extends State<PictureScanner> {
     });
   }
 
+  
+  void _sendTextToEmail() async {
+    var resBody = {};
+    resBody["text"] = _scanResults;
+    await http.post("https://text-extract-api.now.sh/scrap", body: resBody).then((http.Response response) {
+      final int statusCode = response.statusCode;
+      // try a basic route
+    });
+    return null;
+  }
+
   CustomPaint _buildResults(Size imageSize, dynamic results) {
     CustomPainter painter;
 
@@ -204,11 +215,27 @@ class _PictureScannerState extends State<PictureScanner> {
       body: _imageFile == null
           ? const Center(child: Text('No image selected.'))
           : _buildImage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getAndScanImage,
-        tooltip: 'Pick Image',
-        child: const Icon(Icons.add_a_photo),
-      ),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          FloatingActionButton(
+            heroTag: 'unq3',
+            onPressed: _getAndScanImage,
+            tooltip: 'Pick Image',
+            child: const Icon(Icons.add_a_photo),
+          ),
+          SizedBox(
+            height: 16.0,
+          ),
+          FloatingActionButton(
+            heroTag: 'unq4',
+            onPressed: _sendTextToEmail,
+            materialTapTargetSize: MaterialTapTargetSize.padded,
+            backgroundColor: Colors.green,
+            child: const Icon(Icons.add_location, size: 36.0),
+          ),
+          ],
+        )
     );
   }
 
