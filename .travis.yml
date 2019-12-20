@@ -29,13 +29,13 @@ matrix:
     - git clone https://github.com/flutter/flutter.git -b master
     - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
     script:
-    - flutter channel master
-    - flutter upgrade
-    - flutter config --enable-web
-    - flutter packages get
+    - flutter channel master || true
+    - flutter upgrade || true
+    - flutter config --enable-web || true
+    - flutter packages get || true
     - flutter test || true
-    - flutter build web
-    - ls
+    - flutter build web || true
+    - ls || true
     deploy:
       provider: pages
       token: $GITHUB_TOKEN
