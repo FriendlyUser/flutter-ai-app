@@ -200,7 +200,7 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
       'text': _scanResults
     };
     var resBody = json.encode(data);
-    await http.post("https://text-extract-api.now.sh/items", body: resBody);
+    await http.post("https://text-extract-api.now.sh/items", headers: {"Content-Type": "application/json"}, body: resBody);
     return null;
   }
 
