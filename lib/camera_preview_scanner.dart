@@ -196,12 +196,11 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
   }
 
   void _sendTextToEmail() async {
-    var resBody = {};
-    resBody["text"] = _scanResults;
-    await http.post("https://text-extract-api.now.sh/scrap", body: resBody).then((http.Response response) {
-      final int statusCode = response.statusCode;
-      // try a basic route
-    });
+    Map data = {
+      'text': _scanResults
+    };
+    var resBody = json.encode(data);
+    await http.post("https://text-extract-api.now.sh/items", body: resBody);
     return null;
   }
 
