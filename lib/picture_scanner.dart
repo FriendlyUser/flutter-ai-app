@@ -109,12 +109,14 @@ class _PictureScannerState extends State<PictureScanner> {
 
   
   void _sendTextToEmail() async {
-    var resBody = {};
-    resBody["text"] = _scanResults;
-    await http.post("https://text-extract-api.now.sh/scrap", body: resBody).then((http.Response response) {
-      final int statusCode = response.statusCode;
-      // try a basic route
-    });
+    Map data = {
+      'text': _scanResults
+    }
+    //encode Map to JSON
+    var body = json.encode(data);
+    await http.post("https://text-extract-api.now.sh/scrap", 
+      headers: {"Content-Type": "application/json"},
+      body: body)
     return null;
   }
 
