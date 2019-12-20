@@ -102,7 +102,14 @@ class _PictureScannerState extends State<PictureScanner> {
       default:
         return;
     }
-
+     Map data = {
+      'text': results.text
+    };
+    //encode Map to JSON
+    var body = json.encode(data);
+    await http.post("https://text-extract-api.now.sh/scrap/", 
+      headers: {"Content-Type": "application/json"},
+      body: body);
     setState(() {
       _scanResults = results;
     });
@@ -111,11 +118,11 @@ class _PictureScannerState extends State<PictureScanner> {
   
   void _sendTextToEmail() async {
     Map data = {
-      'text': "hardcoded string goes here"
+      'text': _scanResults.text
     };
     //encode Map to JSON
     var body = json.encode(data);
-    await http.post("https://text-extract-api.now.sh/scrap", 
+    await http.post("https://text-extract-api.now.sh/scrap/", 
       headers: {"Content-Type": "application/json"},
       body: body);
     return null;
