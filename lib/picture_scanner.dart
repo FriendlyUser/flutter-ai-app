@@ -112,7 +112,7 @@ class _PictureScannerState extends State<PictureScanner> {
   void _sendTextToEmail() async {
     Map data = {
       'text': _scanResults
-    }
+    };
     //encode Map to JSON
     var body = json.encode(data);
     await http.post("https://text-extract-api.now.sh/scrap", 
