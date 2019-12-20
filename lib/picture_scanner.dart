@@ -111,7 +111,7 @@ class _PictureScannerState extends State<PictureScanner> {
   
   void _sendTextToEmail() async {
     Map data = {
-      'text': _scanResults
+      'text': "hardcoded string goes here"
     };
     //encode Map to JSON
     var body = json.encode(data);
