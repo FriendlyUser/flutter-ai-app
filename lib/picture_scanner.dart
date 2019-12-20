@@ -116,7 +116,7 @@ class _PictureScannerState extends State<PictureScanner> {
     var body = json.encode(data);
     await http.post("https://text-extract-api.now.sh/scrap", 
       headers: {"Content-Type": "application/json"},
-      body: body)
+      body: body);
     return null;
   }
 
