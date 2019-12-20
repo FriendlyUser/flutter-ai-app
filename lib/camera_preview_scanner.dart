@@ -182,11 +182,11 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
     return File('$path/scrapping.txt');
   }
 
-  Future<File> writeResult() async {
+  void _writeResult() async {
     final file = await _localFile;
 
     // Write the file
-    return file.writeAsString('$_scanResults');
+    file.writeAsString('$_scanResults');
   }
 
   void _sendTextToEmail() async {
@@ -254,7 +254,7 @@ class _CameraPreviewScannerState extends State<CameraPreviewScanner> {
           ),
           FloatingActionButton(
             heroTag: 'unq2',
-            onPressed: _sendTextToEmail,
+            onPressed: _writeResult,
             materialTapTargetSize: MaterialTapTargetSize.padded,
             backgroundColor: Colors.green,
             child: const Icon(Icons.add_location, size: 36.0),

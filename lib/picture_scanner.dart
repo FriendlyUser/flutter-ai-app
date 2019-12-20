@@ -9,7 +9,7 @@ import 'dart:ui';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:http/http.dart' as http;
 import 'detector_painters.dart';
 
 class PictureScanner extends StatefulWidget {
